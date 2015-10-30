@@ -1,0 +1,13 @@
+//
+//  XMAFUploadManager.m
+//  XMAFNetworkExample
+//
+//  Created by shscce on 15/10/28.
+//  Copyright © 2015年 xmfraker. All rights reserved.
+//
+
+#import "XMAFUploadManager.h"
+
+@implementation XMAFUploadManager
+
+@end
