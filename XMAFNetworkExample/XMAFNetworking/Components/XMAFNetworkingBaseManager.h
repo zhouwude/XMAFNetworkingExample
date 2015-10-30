@@ -123,7 +123,6 @@ typedef NS_ENUM (NSUInteger, XMAFManagerRequestType){
 - (BOOL)shouldCallAPIWithParams:(NSDictionary *)params;
 - (void)afterCallingAPIWithParams:(NSDictionary *)params;
 
-
 - (void)cleanData;
 - (NSDictionary *)reformParams:(NSDictionary *)params;
 - (BOOL)shouldCache;

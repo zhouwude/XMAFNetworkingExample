@@ -1,7 +1,7 @@
 //
 //  XMAFAPPContext.h
 //  XMAFNetworkExample
-//
+//  XMAFAPPContext 关于app的一些基础配置
 //  Created by shscce on 15/10/21.
 //  Copyright © 2015年 xmfraker. All rights reserved.
 //

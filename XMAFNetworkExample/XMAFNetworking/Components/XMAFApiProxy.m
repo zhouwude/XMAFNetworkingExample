@@ -17,11 +17,8 @@
 @property (nonatomic, strong) NSMutableDictionary *dispatchTable;
 @property (nonatomic, strong) NSNumber *recordedRequestId;
 
-//AFNetworking stuff
-@property (nonatomic, strong) AFHTTPRequestOperationManager *operationManager;
-
-
-//@property (strong, nonatomic) AFHTTPSessionManager *operationManager;
+//AFNetorking 请求管理manager,使用最新的AFHTTPSessionManager
+@property (strong, nonatomic) AFHTTPSessionManager *operationManager;
 
 @end
 
@@ -56,8 +53,8 @@
 
 - (void)cancelRequestWithRequestID:(NSNumber *)requestID
 {
-    NSOperation *requestOperation = self.dispatchTable[requestID];
-    [requestOperation cancel];
+    NSURLSessionDataTask *dataTask = self.dispatchTable[requestID];
+    [dataTask cancel];
     [self.dispatchTable removeObjectForKey:requestID];
 }
 
@@ -76,56 +73,25 @@
     // 之所以不用getter，是因为如果放到getter里面的话，每次调用self.recordedRequestId的时候值就都变了，违背了getter的初衷
     NSNumber *requestId = [self generateRequestId];
     
-    // 跑到这里的block的时候，就已经是主线程了。
-    AFHTTPRequestOperation *httpRequestOperation = [self.operationManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        AFHTTPRequestOperation *storedOperation = self.dispatchTable[requestId];
-        if (storedOperation == nil) {
-            // 如果这个operation是被cancel的，那就不用处理回调了。
-            return;
-        } else {
+    __weak __typeof(&*self) wself = self;
+    NSURLSessionDataTask *dataTask = [self.operationManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        __strong __typeof(wself)self = wself;
+        NSURLSessionDataTask *storedDataTask = self.dispatchTable[requestId];
+        if (!storedDataTask) {
+            return ;
+        }else{
             [self.dispatchTable removeObjectForKey:requestId];
         }
-        
-        [XMAFLogger logDebugInfoWithResponse:operation.response
-                               resposeString:operation.responseString
-                                     request:operation.request
-                                       error:NULL];
-        
-        XMAFURLResponse *response = [[XMAFURLResponse alloc] initWithResponseString:operation.responseString
-                         requestId:requestId
-                           request:operation.request
-                      responseData:operation.responseData
-                            status:XMAFURLResponseStatusSuccess];
-        success?success(response):nil;
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        AFHTTPRequestOperation *storedOperation = self.dispatchTable[requestId];
-        if (storedOperation == nil) {
-            // 如果这个operation是被cancel的，那就不用处理回调了。
-            return;
-        } else {
-            [self.dispatchTable removeObjectForKey:requestId];
+        XMAFURLResponse *httpResponse = [[XMAFURLResponse alloc] initWithResponse:responseObject requestId:requestId request:request error:error];
+        [XMAFLogger logDebugInfoWithResponse:(NSHTTPURLResponse *)response resposeString:httpResponse.responseString request:request error:error];
+        if (error) {
+            fail ? fail(httpResponse) : nil;
+        }else {
+            success ? success(httpResponse) : nil;
         }
-        
-        [XMAFLogger logDebugInfoWithResponse:operation.response
-                               resposeString:operation.responseString
-                                     request:operation.request
-                                       error:error];
-        
-        XMAFURLResponse *response = [[XMAFURLResponse alloc] initWithResponseString:operation.responseString
-                         requestId:requestId
-                           request:operation.request
-                      responseData:operation.responseData
-                             error:error];
-        
-        fail?fail(response):nil;
-        
     }];
-    
-    self.dispatchTable[requestId] = httpRequestOperation;
-    [[self.operationManager operationQueue] addOperation:httpRequestOperation];
+    self.dispatchTable[requestId] = dataTask;
+    [dataTask resume];
     return requestId;
 }
 
@@ -155,11 +121,11 @@
     return _dispatchTable;
 }
 
-- (AFHTTPRequestOperationManager *)operationManager
-{
-    if (_operationManager == nil) {
-        _operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:nil];
-        _operationManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+- (AFHTTPSessionManager *)operationManager {
+    if (!_operationManager) {
+        _operationManager = [[AFHTTPSessionManager alloc] init];
+        _operationManager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return _operationManager;
 }

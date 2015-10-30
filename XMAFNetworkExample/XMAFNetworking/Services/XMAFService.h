@@ -39,6 +39,7 @@
 @property (nonatomic, strong, readonly) NSString *apiBaseUrl;
 @property (nonatomic, strong, readonly) NSString *apiVersion;
 @property (copy, nonatomic, readonly) NSDictionary *commonParams;
+@property (copy, nonatomic, readonly) NSDictionary *httpHeaders;
 
 @property (nonatomic, weak) id<XMAFServiceProtocal> child;
 

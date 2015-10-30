@@ -61,7 +61,7 @@
         [logString appendFormat:@"Version:\t\t%@\n", [service.apiVersion XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Service:\t\t%@\n", [service class]];
         [logString appendFormat:@"Status:\t\t\t%@\n", isOnline ? @"online" : @"offline"];
-        [logString appendFormat:@"Public Key:\t\t%@\n", [service.publicKey XMAF_defaultValue:@"N/A"]];
+        [logString appendFormat:@"Public Key:\t%@\n", [service.publicKey XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Private Key:\t%@\n", [service.privateKey XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Params:\n%@", requestParams];
         
@@ -107,11 +107,11 @@
         [logString appendFormat:@"API Name:\t\t%@\n", [methodName XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Version:\t\t%@\n", [service.apiVersion XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Service:\t\t%@\n", [service class]];
-        [logString appendFormat:@"Public Key:\t\t%@\n", [service.publicKey XMAF_defaultValue:@"N/A"]];
+        [logString appendFormat:@"Public Key:\t%@\n", [service.publicKey XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Private Key:\t%@\n", [service.privateKey XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Method Name:\t%@\n", methodName];
         [logString appendFormat:@"Params:\n%@\n\n", response.requestParams];
-        [logString appendFormat:@"Content:\n\t%@\n\n", response.contentString];
+        [logString appendFormat:@"Content:\n\t%@\n\n", response.responseString];
         
         [logString appendFormat:@"\n\n==============================================================\n=                 Cached Response End                        =\n==============================================================\n\n\n\n"];
         NSLog(@"%@", logString);

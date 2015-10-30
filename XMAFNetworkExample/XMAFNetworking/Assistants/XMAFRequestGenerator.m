@@ -10,8 +10,8 @@
 
 #import "XMAFLogger.h"
 #import "AFNetworking.h"
-#import "XMAFNetworkingConfiguration.h"
 #import "XMAFServiceFactory.h"
+#import "XMAFNetworkingConfiguration.h"
 
 #import "NSDictionary+XMAFNetworkingMethods.h"
 #import "NSArray+XMAFNetworkingMethods.h"
@@ -57,11 +57,17 @@
     //4.拼接urlString
     NSString *urlString = [NSString stringWithFormat:@"%@%@?%@",service.apiBaseUrl,methodName,[allParams XMAF_urlParamsStringSignature:NO]];
     
+    //5.拼接httpHeaders
+    if (service.httpHeaders) {
+        __weak __typeof(&*self) wself = self;
+        [service.httpHeaders enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            __strong __typeof(&*wself)self = wself;
+            [self.httpRequestSerializer setValue:obj forHTTPHeaderField:key];
+        }];
+    }
+    
     //5.获取request实例
     NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:urlString parameters:nil error:NULL];
-    
-    //!!! test
-    [request setValue:@"3324c6172adfa49500f83424d10435d1" forHTTPHeaderField:@"apikey"];
     request.requestParams = requestParams;
     request.timeoutInterval = kXMAFNetworkingTimeoutSeconds;
     [XMAFLogger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"GET"];

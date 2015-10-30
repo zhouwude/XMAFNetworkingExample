@@ -6,8 +6,7 @@
 //  Copyright © 2015年 xmfraker. All rights reserved.
 //
 
-#import "XMAFNetworkingBaseManager.h"
-
+#import "XMAFNetworking.h"
 #import "ReactiveCocoa.h"
 
 @interface XMAFBaiduWeatherManager : XMAFNetworkingBaseManager<XMAFManagerProtocol>

@@ -11,21 +11,38 @@
 
 @interface XMAFURLResponse : NSObject
 
+
+@property (copy, nonatomic, readonly) id responseObject;
+@property (nonatomic, copy, readonly) NSData *responseData;
+
+@property (nonatomic, copy, readonly) NSString *responseString;
 @property (nonatomic, assign, readonly) XMAFURLResponseStatus status;
-@property (nonatomic, copy, readonly) NSString *contentString;
-@property (nonatomic, copy, readonly) id content;
+
 @property (nonatomic, assign, readonly) NSInteger requestId;
 @property (nonatomic, copy, readonly) NSURLRequest *request;
-@property (nonatomic, copy, readonly) NSData *responseData;
 @property (nonatomic, copy) NSDictionary *requestParams;
 @property (nonatomic, assign, readonly) BOOL isCache;
 
 
-- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData status:(XMAFURLResponseStatus)status;
+/**
+ *  生成一个XMAFURLResponse实例 默认isCache为NO
+ *
+ *  @param response  传入的response返回数据,可能是NSData 也可能是NSDictionary
+ *  @param requestId 请求id
+ *  @param request   请求request实例
+ *  @param error     请求的错误 可能为nil
+ *
+ *  @return 一个XMAFURLResponse 实例
+ */
+- (instancetype)initWithResponse:(id)response requestId:(NSNumber *)requestId request:(NSURLRequest *)request error:(NSError *)error;
 
-- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData error:(NSError *)error;
-
-// 使用initWithData的response，它的isCache是YES，上面两个函数生成的response的isCache是NO
+/**
+ *  生成一个XMAFURLResponse实例,默认isCache为YES
+ *
+ *  @param data 传入的数据
+ *
+ *  @return 一个XMAFURLResponse 实例
+ */
 - (instancetype)initWithData:(NSData *)data;
 
 @end

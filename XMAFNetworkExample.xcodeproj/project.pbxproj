@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1FC5C41C03FC45740CF12560 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C3C57CC4F0CB5F8F5915B7 /* libPods.a */; };
+		933CD15C1BE21B4D00EEC321 /* upload2.png in Resources */ = {isa = PBXBuildFile; fileRef = 933CD15B1BE21B4D00EEC321 /* upload2.png */; settings = {ASSET_TAGS = (); }; };
+		933F7AC81BE0B5C4000A095E /* XMAFUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933F7AC71BE0B5C4000A095E /* XMAFUploadManager.m */; settings = {ASSET_TAGS = (); }; };
+		933F7ACA1BE0BFA4000A095E /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 933F7AC91BE0BFA4000A095E /* upload.png */; settings = {ASSET_TAGS = (); }; };
+		933F7ACB1BE0BFA4000A095E /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 933F7AC91BE0BFA4000A095E /* upload.png */; settings = {ASSET_TAGS = (); }; };
+		934179381BDF399A0099EA33 /* XMAFDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 934179371BDF399A0099EA33 /* XMAFDownloadManager.m */; settings = {ASSET_TAGS = (); }; };
 		9348CF091BD75E0500FD8419 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9348CF081BD75E0500FD8419 /* main.m */; };
 		9348CF0C1BD75E0500FD8419 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9348CF0B1BD75E0500FD8419 /* AppDelegate.m */; };
 		9348CF0F1BD75E0500FD8419 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9348CF0E1BD75E0500FD8419 /* ViewController.m */; };
@@ -53,6 +58,12 @@
 		16F1218B8D29655EE11E7FD7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		39A87FDF68BF2AA1FD69E9F3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		80C3C57CC4F0CB5F8F5915B7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		933CD15B1BE21B4D00EEC321 /* upload2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload2.png; sourceTree = "<group>"; };
+		933F7AC61BE0B5C4000A095E /* XMAFUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFUploadManager.h; sourceTree = "<group>"; };
+		933F7AC71BE0B5C4000A095E /* XMAFUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFUploadManager.m; sourceTree = "<group>"; };
+		933F7AC91BE0BFA4000A095E /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
+		934179361BDF399A0099EA33 /* XMAFDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFDownloadManager.h; sourceTree = "<group>"; };
+		934179371BDF399A0099EA33 /* XMAFDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFDownloadManager.m; sourceTree = "<group>"; };
 		9348CF041BD75E0500FD8419 /* XMAFNetworkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMAFNetworkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9348CF081BD75E0500FD8419 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9348CF0A1BD75E0500FD8419 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -141,6 +152,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		933F7AC51BE0B5A6000A095E /* UploadComponent */ = {
+			isa = PBXGroup;
+			children = (
+				933F7AC61BE0B5C4000A095E /* XMAFUploadManager.h */,
+				933F7AC71BE0B5C4000A095E /* XMAFUploadManager.m */,
+			);
+			path = UploadComponent;
+			sourceTree = "<group>";
+		};
+		934179351BDF398A0099EA33 /* DownloadComponent */ = {
+			isa = PBXGroup;
+			children = (
+				934179361BDF399A0099EA33 /* XMAFDownloadManager.h */,
+				934179371BDF399A0099EA33 /* XMAFDownloadManager.m */,
+			);
+			path = DownloadComponent;
+			sourceTree = "<group>";
+		};
 		9348CEFB1BD75E0500FD8419 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +219,8 @@
 		9348CF201BD75E0500FD8419 /* XMAFNetworkExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				933F7AC91BE0BFA4000A095E /* upload.png */,
+				933CD15B1BE21B4D00EEC321 /* upload2.png */,
 				9348CF211BD75E0500FD8419 /* XMAFNetworkExampleTests.m */,
 				9348CF231BD75E0500FD8419 /* Info.plist */,
 			);
@@ -246,6 +277,8 @@
 		9348CF311BD75EE700FD8419 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				933F7AC51BE0B5A6000A095E /* UploadComponent */,
+				934179351BDF398A0099EA33 /* DownloadComponent */,
 				93867C181BD8876B0042D3CC /* CahceComponent */,
 				93CAD13F1BD76E2B007B49AA /* LogComponent */,
 				93CAD1461BD76F06007B49AA /* XMAFAPPContext.h */,
@@ -405,6 +438,7 @@
 			files = (
 				9348CF171BD75E0500FD8419 /* LaunchScreen.storyboard in Resources */,
 				9348CF141BD75E0500FD8419 /* Assets.xcassets in Resources */,
+				933F7ACA1BE0BFA4000A095E /* upload.png in Resources */,
 				9348CF121BD75E0500FD8419 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +447,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933F7ACB1BE0BFA4000A095E /* upload.png in Resources */,
+				933CD15C1BE21B4D00EEC321 /* upload2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,9 +513,11 @@
 				93CAD1691BD78356007B49AA /* NSArray+XMAFNetworkingMethods.m in Sources */,
 				93CAD1481BD76F06007B49AA /* XMAFAPPContext.m in Sources */,
 				9348CF0C1BD75E0500FD8419 /* AppDelegate.m in Sources */,
+				934179381BDF399A0099EA33 /* XMAFDownloadManager.m in Sources */,
 				93CAD14B1BD775C6007B49AA /* XMAFService.m in Sources */,
 				9348CF091BD75E0500FD8419 /* main.m in Sources */,
 				93CAD1601BD77CE9007B49AA /* XMAFRequestGenerator.m in Sources */,
+				933F7AC81BE0B5C4000A095E /* XMAFUploadManager.m in Sources */,
 				93CAD1631BD780DE007B49AA /* XMAFCommonParamsGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +679,7 @@
 		};
 		9348CF2B1BD75E0500FD8419 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16F1218B8D29655EE11E7FD7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = XMAFNetworkExampleTests/Info.plist;

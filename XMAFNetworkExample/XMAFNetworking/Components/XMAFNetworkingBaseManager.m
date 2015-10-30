@@ -232,7 +232,7 @@
     NSString *serviceIdentifier = self.child.serviceType;
     NSString *methodName = self.child.methodName;
     NSData *result = [self.cache fetchCachedDataWithServiceIdentifier:serviceIdentifier methodName:methodName requestParams:params];
-    
+        
     if (result == nil) {
         return NO;
     }
@@ -259,13 +259,13 @@
 
 - (void)successedOnCallingAPI:(XMAFURLResponse *)response
 {
-    if (response.content) {
-        self.fetchedRawData = [response.content copy];
+    if (response.responseObject) {
+        self.fetchedRawData = [response.responseObject copy];
     } else {
         self.fetchedRawData = [response.responseData copy];
     }
     [self removeRequestIdWithRequestID:response.requestId];
-    if (!self.validator || [self.validator manager:self isCorrectWithResponseData:response.content]) {
+    if (!self.validator || [self.validator manager:self isCorrectWithResponseData:self.fetchedRawData]) {
         if ([self shouldCache] && !response.isCache) {
             [self.cache saveCacheWithData:response.responseData serviceIdentifier:self.child.serviceType methodName:self.child.methodName requestParams:response.requestParams];
         }
