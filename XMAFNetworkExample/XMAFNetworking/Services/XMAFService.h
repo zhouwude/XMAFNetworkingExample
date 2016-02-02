@@ -8,29 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-// 所有XMAFService的派生类都要符合这个protocal
-@protocol XMAFServiceProtocal <NSObject>
-
-@property (nonatomic, readonly) BOOL isOnline;/**< 是否是正式模式 */
-
-@property (nonatomic, readonly) NSString *offlineApiBaseUrl; /**< 测试服务器地址 */
-@property (nonatomic, readonly) NSString *onlineApiBaseUrl; /**< 正式服务器地址 */
-
-@property (nonatomic, readonly) NSString *offlineApiVersion; /**< 测试服务器api版本 */
-@property (nonatomic, readonly) NSString *onlineApiVersion; /**< 正式服务器api版本 */
-
-@property (nonatomic, readonly) NSString *onlinePublicKey; /**< 正式服务器公钥 */
-@property (nonatomic, readonly) NSString *offlinePublicKey; /**< 测试服务器公钥 */
-
-@property (nonatomic, readonly) NSString *onlinePrivateKey; /**< 正式服务器私钥 */
-@property (nonatomic, readonly) NSString *offlinePrivateKey; /**< 测试服务器私钥 */
-
-@property (copy, nonatomic, readonly) NSDictionary *onlineCommonParams; /**< 正式服务器的通用请求参数 */
-
-@property (copy, nonatomic, readonly) NSDictionary *offlineCommonParams; /**< 测试服务器的通用请求参数 */
-
-
-@end
+/** 服务器类型 */
+typedef NS_ENUM(NSUInteger, XMAFServiceType) {
+    /** 未知服务器 */
+    XMAFServiceUnknown = 0,
+    /** 自定义服务器 */
+    XMAFServiceCustom,
+    /** 开发环境内网服务器 */
+    XMAFServiceDevIn,
+    /** 开发环境外网服务器 */
+    XMAFServiceDevOut,
+    /** UAT测试预发服务器 */
+    XMAFServiceUAT,
+    /** 正式发布服务器 */
+    XMAFServiceDis,
+};
 
 @interface XMAFService : NSObject
 
@@ -40,7 +32,8 @@
 @property (nonatomic, strong, readonly) NSString *apiVersion;
 @property (copy, nonatomic, readonly) NSDictionary *commonParams;
 @property (copy, nonatomic, readonly) NSDictionary *httpHeaders;
-
-@property (nonatomic, weak) id<XMAFServiceProtocal> child;
+@property (nonatomic, assign, readonly) BOOL needSign;
+@property (nonatomic, assign) XMAFServiceType serviceType;
+@property (nonatomic, copy, readonly)   NSString *serviceStatus;
 
 @end
