@@ -46,9 +46,11 @@
     
     //2.签名请求参数,并且带上public_key
     NSMutableDictionary *sigParams = [NSMutableDictionary dictionaryWithDictionary:requestParams];
-    sigParams[@"sign_key"] = service.publicKey;
-    NSString *signature = @"";
-    sigParams[@"sign"] = signature;
+    if (service.needSign) {
+        sigParams[@"sign_key"] = service.publicKey;
+        NSString *signature = @"";
+        sigParams[@"sign"] = signature;
+    }
     
     //3.拼接所有的请求参数
     NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:service.commonParams];
@@ -58,7 +60,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@?%@",service.apiBaseUrl,methodName,[allParams XMAF_urlParamsStringSignature:NO]];
     
     //5.拼接httpHeaders
-    if (service.httpHeaders) {
+    if (service.httpHeaders && service.httpHeaders.allKeys.count > 0) {
         __weak __typeof(&*self) wself = self;
         [service.httpHeaders enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             __strong __typeof(&*wself)self = wself;
@@ -83,10 +85,14 @@
     
     NSMutableDictionary *allParams = [[NSMutableDictionary alloc] initWithDictionary:service.commonParams];
     
+    [allParams addEntriesFromDictionary:requestParams];
+    
     //2.签名请求参数
     NSString *signature = @"";
-    allParams[@"sign_key"] = service.publicKey;
-    allParams[@"sign"] = signature;
+    if (service.needSign) {
+        allParams[@"sign_key"] = service.publicKey;
+        allParams[@"sign"] = signature;
+    }
     
     //3.拼接请求参数
     NSString *urlString = [NSString stringWithFormat:@"%@%@",service.apiBaseUrl,methodName];
@@ -107,6 +113,7 @@
         _httpRequestSerializer = [AFHTTPRequestSerializer serializer];
         _httpRequestSerializer.timeoutInterval = kXMAFNetworkingTimeoutSeconds;
         _httpRequestSerializer.cachePolicy = NSURLRequestUseProtocolCachePolicy;
+        _httpRequestSerializer.HTTPShouldHandleCookies = YES;
     }
     return _httpRequestSerializer;
 }

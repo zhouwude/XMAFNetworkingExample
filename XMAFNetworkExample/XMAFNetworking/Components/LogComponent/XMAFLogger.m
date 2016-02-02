@@ -45,22 +45,13 @@
 
 + (void)logDebugInfoWithRequest:(NSURLRequest *)request apiName:(NSString *)apiName service:(XMAFService *)service requestParams:(id)requestParams httpMethod:(NSString *)httpMethod {
     if ([XMAFLogger sharedInstance].configParams.shouldLog) {
-        BOOL isOnline = NO;
-        if ([service respondsToSelector:@selector(isOnline)]) {
-            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[service methodSignatureForSelector:@selector(isOnline)]];
-            invocation.target = service;
-            invocation.selector = @selector(isOnline);
-            [invocation invoke];
-            [invocation getReturnValue:&isOnline];
-        }
-        
         NSMutableString *logString = [NSMutableString stringWithString:@"\n\n**************************************************************\n*                       Request Start                        *\n**************************************************************\n\n"];
         
         [logString appendFormat:@"API Name:\t\t%@\n", [apiName XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Method:\t\t\t%@\n", [httpMethod XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Version:\t\t%@\n", [service.apiVersion XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Service:\t\t%@\n", [service class]];
-        [logString appendFormat:@"Status:\t\t\t%@\n", isOnline ? @"online" : @"offline"];
+        [logString appendFormat:@"Status:\t\t\t%@\n", service.serviceStatus];
         [logString appendFormat:@"Public Key:\t%@\n", [service.publicKey XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Private Key:\t%@\n", [service.privateKey XMAF_defaultValue:@"N/A"]];
         [logString appendFormat:@"Params:\n%@", requestParams];

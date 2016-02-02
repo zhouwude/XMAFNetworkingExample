@@ -12,7 +12,7 @@
 #import "XMAFApiProxy.h"
 #import "XMAFAppContext.h"
 #import "XMAFServiceFactory.h"
-#import "XMAFNetworkingBaseManager.h"
+#import "XMAFNetworkingBaseRequest.h"
 #import "XMAFNetworkingConfiguration.h"
 
 #endif /* XMAFNetworking_h */

@@ -11,7 +11,9 @@
 #import "XMAFBaiduWeatherManager.h"
 #import "XMAFDownloadManager.h"
 
-@interface ViewController ()
+#import "AFNetworking.h"
+
+@interface ViewController ()<UIViewControllerContextTransitioning,UIViewControllerTransitioningDelegate>
 
 @property (strong, nonatomic) NSURLSessionDownloadTask *task;
 @property (strong, nonatomic) NSURLSessionDownloadTask *task2;
@@ -33,6 +35,44 @@
         return [RACSignal empty];
     }];
     [self.view addSubview:button];
+    
+}
+
+
+- (void)viewWillAppear:(BOOL)animated    // Called when the view is about to made visible. Default does nothing
+{
+    
+    [super viewWillAppear:animated];
+    NSLog(@"%@",NSStringFromSelector(@selector(viewWillAppear:)));
+}
+- (void)viewDidAppear:(BOOL)animated     // Called when the view has been fully transitioned onto the screen. Default does nothing
+{
+    
+    [super viewDidAppear:animated];
+    NSLog(@"%@",NSStringFromSelector(@selector(viewDidAppear:)));
+}
+- (void)viewWillDisappear:(BOOL)animated // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
+{
+    
+    [super viewWillDisappear:animated];
+    NSLog(@"%@",NSStringFromSelector(@selector(viewWillDisappear:)));
+}
+- (void)viewDidDisappear:(BOOL)animated  // Called after the view was dismissed, covered or otherwise hidden. Default does nothing
+{
+    [super viewDidDisappear:animated];
+    NSLog(@"%@",NSStringFromSelector(@selector(viewDidDisappear:)));
+}
+
+// Called just before the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
+- (void)viewWillLayoutSubviews NS_AVAILABLE_IOS(5_0);
+// Called just after the view controller's view's layoutSubviews method is invoked. Subclasses can implement as necessary. The default is a nop.
+{
+    [super viewWillLayoutSubviews];
+    NSLog(@"%@",NSStringFromSelector(@selector(viewWillLayoutSubviews)));
+}
+- (void)viewDidLayoutSubviews NS_AVAILABLE_IOS(5_0){
+    [super viewWillLayoutSubviews];
+    NSLog(@"%@",NSStringFromSelector(@selector(viewDidLayoutSubviews)));
 }
 
 - (void)loadData {
@@ -44,6 +84,7 @@
     } error:^(NSError *error) {
         
     }];
+    
 }
 
 - (void)downloadFile {
@@ -64,6 +105,7 @@
 
 
 - (void)downloadFile2 {
+
     NSString *imageURLString = @"http://pic1.win4000.com/wallpaper/0/51f1e408b5ea1.jpg";
     if (!self.task2) {
         self.task2 = [[XMAFDownloadManager manager] downloadWithConstructBlock:^NSDictionary *{

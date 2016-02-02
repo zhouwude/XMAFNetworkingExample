@@ -9,7 +9,7 @@
 #import "XMAFNetworking.h"
 #import "ReactiveCocoa.h"
 
-@interface XMAFBaiduWeatherManager : XMAFNetworkingBaseManager<XMAFManagerProtocol>
+@interface XMAFBaiduWeatherManager : XMAFNetworkingBaseRequest<XMAFManagerProtocol>
 
 - (RACSignal *)getCityWeather:(NSString *)city;
 

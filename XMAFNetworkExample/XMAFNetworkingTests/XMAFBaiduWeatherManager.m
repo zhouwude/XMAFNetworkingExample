@@ -27,17 +27,17 @@
 
 #pragma mark - XMAFManagerParamSourceDelegate
 
-- (NSDictionary *)paramsForApi:(XMAFNetworkingBaseManager *)manager {
+- (NSDictionary *)paramsForApi:(XMAFNetworkingBaseRequest *)manager {
     return @{@"city":self.city};
 }
 
 #pragma mark - XMAFManagerCallBackDelegate
 
-- (void)managerDidFailed:(XMAFNetworkingBaseManager *)manager {
+- (void)managerDidFailed:(XMAFNetworkingBaseRequest *)request {
     NSLog(@"request did failed in manager");
 }
 
-- (void)managerDidSuccess:(XMAFNetworkingBaseManager *)manager {
+- (void)managerDidSuccess:(XMAFNetworkingBaseRequest *)request {
     NSLog(@"request did success in manager");
 }
 
@@ -47,7 +47,7 @@
     return @"heweather/weather/free";
 }
 
-- (NSString *)serviceType {
+- (NSString *)serviceIndentifier {
     return kXMAFBaiduServiceIdentifier;
 }
 
@@ -62,12 +62,13 @@
 
 #pragma mark - Public Methods
 
+
 - (RACSignal *)getCityWeather:(NSString *)city {
     self.city = [city copy];
     @weakify(self)
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        [self setCallBackBlock:^(XMAFNetworkingBaseManager *manager, BOOL isSuccess) {
+        [self setCallBackBlock:^(XMAFNetworkingBaseRequest *manager, BOOL isSuccess) {
             if (isSuccess) {
                 [subscriber sendNext:manager];
                 [subscriber sendCompleted];

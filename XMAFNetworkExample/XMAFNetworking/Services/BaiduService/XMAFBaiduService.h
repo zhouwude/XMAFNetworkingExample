@@ -9,6 +9,6 @@
 #import "XMAFService.h"
 
 
-@interface XMAFBaiduService : XMAFService<XMAFServiceProtocal>
+@interface XMAFBaiduService : XMAFService
 
 @end

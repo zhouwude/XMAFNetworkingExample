@@ -13,52 +13,28 @@
 
 #pragma mark - Getters
 
-- (BOOL)isOnline {
-    return YES;
-}
-
-- (NSString *)offlineApiBaseUrl {
-    return self.onlineApiBaseUrl;
-}
-
-- (NSString *)offlineApiVersion {
-    return self.onlineApiVersion;
-}
-
-- (NSString *)offlinePrivateKey {
-    return self.onlinePrivateKey;
-}
-
-- (NSString *)offlinePublicKey {
-    return self.onlinePublicKey;
-}
-
-- (NSString *)onlinePublicKey {
-    return @"";
-}
-
-- (NSString *)onlinePrivateKey {
-    return @"";
-}
-
-- (NSString *)onlineApiVersion {
-    return @"v1.0";
-}
-
-- (NSString *)onlineApiBaseUrl {
-    return @"http://apis.baidu.com/";
-}
-
-- (NSDictionary *)onlineCommonParams {
-    return [XMAFCommonParamsGenerator commonParamsDictionary];
-}
-
-- (NSDictionary *)offlineCommonParams {
-    return self.onlineCommonParams;
+- (NSDictionary *)commonParams {
+    switch (self.serviceType) {
+        default:
+            return [XMAFCommonParamsGenerator commonParamsDictionary];
+            break;
+    }
 }
 
 - (NSDictionary *)httpHeaders {
-    return @{@"apikey":@"3324c6172adfa49500f83424d10435d1"};
+    switch (self.serviceType) {
+        default:
+            return @{@"apikey":@"3324c6172adfa49500f83424d10435d1"};
+            break;
+    }
+}
+
+- (NSString *)apiBaseUrl {
+    switch (self.serviceType) {
+        default:
+            return @"http://apis.baidu.com/";
+            break;
+    }
 }
 
 @end

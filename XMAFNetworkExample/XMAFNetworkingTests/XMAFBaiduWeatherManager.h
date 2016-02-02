@@ -6,11 +6,11 @@
 //  Copyright © 2015年 xmfraker. All rights reserved.
 //
 
-#import "XMAFNetworkingBaseManager.h"
+#import "XMAFNetworkingBaseRequest.h"
 
 #import "ReactiveCocoa.h"
 
-@interface XMAFBaiduWeatherManager : XMAFNetworkingBaseManager<XMAFManagerProtocol>
+@interface XMAFBaiduWeatherManager : XMAFNetworkingBaseRequest<XMAFManagerProtocol>
 
 - (RACSignal *)getCityWeather:(NSString *)city;
 

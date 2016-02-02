@@ -33,7 +33,7 @@ NSString *const kXMAFBaiduServiceIdentifier = @"kXMAFBaiduServiceIdentifier";
 
 #pragma mark - Public Methods
 
-- (XMAFService<XMAFServiceProtocal> *)serviceWithIdentifier:(NSString *)identifier {
+- (XMAFService *)serviceWithIdentifier:(NSString *)identifier {
     if (self.serviceStorage[identifier] == nil) {
         self.serviceStorage[identifier] = [self createServiceWithIdentifier:identifier];
     }
@@ -42,7 +42,7 @@ NSString *const kXMAFBaiduServiceIdentifier = @"kXMAFBaiduServiceIdentifier";
 
 #pragma mark - Private Methods
 
-- (XMAFService<XMAFServiceProtocal> *)createServiceWithIdentifier:(NSString *)identifier {
+- (XMAFService *)createServiceWithIdentifier:(NSString *)identifier {
     //TODO增加各种不同的service
     if ([identifier isEqualToString:kXMAFBaiduServiceIdentifier]) {
         return [[XMAFBaiduService alloc] init];

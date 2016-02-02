@@ -40,10 +40,14 @@
         
         if ([response isKindOfClass:[NSData class]]) {
             self.responseData = response;
-            self.responseObject = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers error:NULL];
+            if (self.responseData) {
+                self.responseObject = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers error:NULL];
+            }
         }else {
             self.responseObject = response;
-            self.responseData = [NSJSONSerialization dataWithJSONObject:self.responseObject options:NSJSONWritingPrettyPrinted error:NULL];
+            if (self.responseObject) {
+                self.responseData = [NSJSONSerialization dataWithJSONObject:self.responseObject options:NSJSONWritingPrettyPrinted error:NULL];
+            }
         }
         self.responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
         
@@ -74,16 +78,14 @@
 
 - (XMAFURLResponseStatus)responseStatusWithError:(NSError *)error
 {
+    XMAFURLResponseStatus responseStatus;
     if (error) {
-        XMAFURLResponseStatus result = XMAFURLResponseStatusErrorNoNetwork;
         // 除了超时以外，所有错误都当成是无网络
-        if (error.code == NSURLErrorTimedOut) {
-            result = XMAFURLResponseStatusErrorTimeout;
-        }
-        return result;
+        responseStatus = error.code == NSURLErrorTimedOut ? XMAFURLResponseStatusErrorTimeout : XMAFURLResponseStatusErrorNoNetwork;
     } else {
-        return XMAFURLResponseStatusSuccess;
+        responseStatus = XMAFURLResponseStatusSuccess;
     }
+    return responseStatus;
 }
 
 @end
