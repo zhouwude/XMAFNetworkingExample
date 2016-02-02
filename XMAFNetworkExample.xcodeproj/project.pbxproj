@@ -199,6 +199,7 @@
 				9348CF0B1BD75E0500FD8419 /* AppDelegate.m */,
 				9348CF0D1BD75E0500FD8419 /* ViewController.h */,
 				9348CF0E1BD75E0500FD8419 /* ViewController.m */,
+				93867C201BD8CD000042D3CC /* BaiduService */,
 				9348CF101BD75E0500FD8419 /* Main.storyboard */,
 				9348CF131BD75E0500FD8419 /* Assets.xcassets */,
 				9348CF151BD75E0500FD8419 /* LaunchScreen.storyboard */,
@@ -296,7 +297,6 @@
 		9348CF321BD75EE700FD8419 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				93867C201BD8CD000042D3CC /* BaiduService */,
 				93CAD1491BD775C6007B49AA /* XMAFService.h */,
 				93CAD14A1BD775C6007B49AA /* XMAFService.m */,
 				93CAD14C1BD775E2007B49AA /* XMAFServiceFactory.h */,
@@ -331,7 +331,8 @@
 				93867C211BD8CD120042D3CC /* XMAFBaiduService.h */,
 				93867C221BD8CD120042D3CC /* XMAFBaiduService.m */,
 			);
-			path = BaiduService;
+			name = BaiduService;
+			path = XMAFNetworking/Services/BaiduService;
 			sourceTree = "<group>";
 		};
 		93BFC41B4AFFCA459809324C /* Pods */ = {

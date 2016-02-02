@@ -10,8 +10,6 @@
 
 #import "XMAFService.h"
 
-FOUNDATION_EXPORT NSString *const kXMAFBaiduServiceIdentifier;
-
 @interface XMAFServiceFactory : NSObject
 
 + (instancetype)sharedInstance;
