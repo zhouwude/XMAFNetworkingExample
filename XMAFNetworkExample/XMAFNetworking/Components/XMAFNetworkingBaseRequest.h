@@ -1,5 +1,5 @@
 //
-//  XMAFNetworkingBaseManager.h
+//  XMAFNetworkingBaseRequest.h
 //  XMAFNetworkExample
 //
 //  Created by shscce on 15/10/21.
@@ -11,36 +11,36 @@
 #import "XMAFURLResponse.h"
 
 // 在调用成功之后的params字典里面，用这个key可以取出requestID
-static NSString * const kXMAFNetworkingBaseManagerRequestID = @"kXMAFNetworkingBaseManagerRequestID";
+static NSString * const kXMAFNetworkingBaseRequestRequestID = @"kXMAFNetworkingBaseRequestRequestID";
 
-@class XMAFNetworkingBaseManager;
+@class XMAFNetworkingBaseRequest;
 @protocol XMAFManagerCallBackDelegate <NSObject>
 @required
-- (void)managerDidSuccess:(XMAFNetworkingBaseManager *)manager;
-- (void)managerDidFailed:(XMAFNetworkingBaseManager *)manager;
+- (void)managerDidSuccess:(XMAFNetworkingBaseRequest *)request;
+- (void)managerDidFailed:(XMAFNetworkingBaseRequest *)request;
 @end
 
-typedef void(^XMAFManagerCallBackBlock)(XMAFNetworkingBaseManager *manager, BOOL didSuccess);
+typedef void(^XMAFManagerCallBackBlock)(XMAFNetworkingBaseRequest *manager, BOOL didSuccess);
 
 @protocol XMAFManagerCallBackDataReformer <NSObject>
 
 @required
-- (id)manage:(XMAFNetworkingBaseManager *)manager reformerData:(NSDictionary *)data;
+- (id)manage:(XMAFNetworkingBaseRequest *)request reformerData:(NSDictionary *)data;
 
 @end
 
 @protocol XMAFManagerValidator <NSObject>
 
 @required
-- (BOOL)manager:(XMAFNetworkingBaseManager *)manager isCorrectWithResponseData:(NSDictionary *)responseData;
-- (BOOL)manager:(XMAFNetworkingBaseManager *)manager isCorrectWithRequestParamsData:(NSDictionary *)requestParamsData;
+- (BOOL)manager:(XMAFNetworkingBaseRequest *)request isCorrectWithResponseData:(NSDictionary *)responseData;
+- (BOOL)manager:(XMAFNetworkingBaseRequest *)request isCorrectWithRequestParamsData:(NSDictionary *)requestParamsData;
 @end
 
 
 @protocol XMAFManagerParamSourceDelegate <NSObject>
 
 @required
-- (NSDictionary *)paramsForApi:(XMAFNetworkingBaseManager *)manager;
+- (NSDictionary *)paramsForApi:(XMAFNetworkingBaseRequest *)request;
 
 @end
 
@@ -68,14 +68,14 @@ typedef NS_ENUM (NSUInteger, XMAFManagerRequestType){
 @protocol XMAFManagerInterceptor <NSObject>
 
 @optional
-- (void)manager:(XMAFNetworkingBaseManager *)manager beforePerformSuccessWithResponse:(XMAFURLResponse *)response;
-- (void)manager:(XMAFNetworkingBaseManager *)manager afterPerformSuccessWithResponse:(XMAFURLResponse *)response;
+- (void)manager:(XMAFNetworkingBaseRequest *)request beforePerformSuccessWithResponse:(XMAFURLResponse *)response;
+- (void)manager:(XMAFNetworkingBaseRequest *)request afterPerformSuccessWithResponse:(XMAFURLResponse *)response;
 
-- (void)manager:(XMAFNetworkingBaseManager *)manager beforePerformFailWithResponse:(XMAFURLResponse *)response;
-- (void)manager:(XMAFNetworkingBaseManager *)manager afterPerformFailWithResponse:(XMAFURLResponse *)response;
+- (void)manager:(XMAFNetworkingBaseRequest *)request beforePerformFailWithResponse:(XMAFURLResponse *)response;
+- (void)manager:(XMAFNetworkingBaseRequest *)request afterPerformFailWithResponse:(XMAFURLResponse *)response;
 
-- (BOOL)manager:(XMAFNetworkingBaseManager *)manager shouldCallAPIWithParams:(NSDictionary *)params;
-- (void)manager:(XMAFNetworkingBaseManager *)manager afterCallingAPIWithParams:(NSDictionary *)params;
+- (BOOL)manager:(XMAFNetworkingBaseRequest *)request shouldCallAPIWithParams:(NSDictionary *)params;
+- (void)manager:(XMAFNetworkingBaseRequest *)request afterCallingAPIWithParams:(NSDictionary *)params;
 
 @end
 
@@ -83,12 +83,12 @@ typedef NS_ENUM (NSUInteger, XMAFManagerRequestType){
 
 @required
 - (NSString *)methodName;
-- (NSString *)serviceType;
+- (NSString *)serviceIndentifier;
 - (XMAFManagerRequestType)requestType;
 
 @end
 
-@interface XMAFNetworkingBaseManager : NSObject
+@interface XMAFNetworkingBaseRequest : NSObject
 
 @property (nonatomic, weak) id<XMAFManagerCallBackDelegate> delegate;
 @property (copy, nonatomic) XMAFManagerCallBackBlock callBackBlock;

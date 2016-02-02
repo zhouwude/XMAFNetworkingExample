@@ -1,12 +1,12 @@
 //
-//  XMAFNetworkingBaseManager.m
+//  XMAFNetworkingBaseRequest.m
 //  XMAFNetworkExample
 //
 //  Created by shscce on 15/10/21.
 //  Copyright © 2015年 xmfraker. All rights reserved.
 //
 
-#import "XMAFNetworkingBaseManager.h"
+#import "XMAFNetworkingBaseRequest.h"
 
 #import "XMAFCache.h"
 #import "XMAFLogger.h"
@@ -15,7 +15,7 @@
 #import "XMAFNetworkingConfiguration.h"
 
 
-@interface XMAFNetworkingBaseManager ()
+@interface XMAFNetworkingBaseRequest ()
 
 @property (nonatomic, strong, readwrite) id fetchedRawData;
 
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation XMAFNetworkingBaseManager
+@implementation XMAFNetworkingBaseRequest
 
 #pragma mark - Life Cycle
 
@@ -90,7 +90,7 @@
 
 /**
  *  notes
- *  拦截器使用: XMAFNetworkingBaseManager 子类重载此方法,实现内部拦截,或者直接使用外部拦截器self.interceptor拦截
+ *  拦截器使用: XMAFNetworkingBaseRequest 子类重载此方法,实现内部拦截,或者直接使用外部拦截器self.interceptor拦截
  *  子类重载后 需要调用[super xxx] 实现外部拦截,根据调用[super xxx]的顺序决定内,外拦截器使用顺序
  */
 
@@ -187,7 +187,7 @@
                 {
                     case XMAFManagerRequestTypeGet:
                     {
-                        requestId = [[XMAFApiProxy sharedInstance] callGETWithParams:apiParams serviceIdentifier:self.child.serviceType methodName:self.child.methodName success:^(XMAFURLResponse *response) {
+                        requestId = [[XMAFApiProxy sharedInstance] callGETWithParams:apiParams serviceIdentifier:self.child.serviceIndentifier methodName:self.child.methodName success:^(XMAFURLResponse *response) {
                             [self successedOnCallingAPI:response];
                         } fail:^(XMAFURLResponse *response) {
                             [self failedOnCallingAPI:response withErrorType:XMAFManagerErrorTypeDefault];
@@ -197,7 +197,7 @@
                         break;
                     case XMAFManagerRequestTypePost:
                     {
-                        requestId = [[XMAFApiProxy sharedInstance] callPOSTWithParams:apiParams serviceIdentifier:self.child.serviceType methodName:self.child.methodName success:^(XMAFURLResponse *response) {
+                        requestId = [[XMAFApiProxy sharedInstance] callPOSTWithParams:apiParams serviceIdentifier:self.child.serviceIndentifier methodName:self.child.methodName success:^(XMAFURLResponse *response) {
                             [self successedOnCallingAPI:response];
                         } fail:^(XMAFURLResponse *response) {
                             [self failedOnCallingAPI:response withErrorType:XMAFManagerErrorTypeDefault];
@@ -210,7 +210,7 @@
                 }
                 
                 NSMutableDictionary *params = [apiParams mutableCopy];
-                params[kXMAFNetworkingBaseManagerRequestID] = @(requestId);
+                params[kXMAFNetworkingBaseRequestRequestID] = @(requestId);
                 [self afterCallingAPIWithParams:params];
                 return requestId;
                 
@@ -229,7 +229,7 @@
 
 - (BOOL)hasCacheWithParams:(NSDictionary *)params
 {
-    NSString *serviceIdentifier = self.child.serviceType;
+    NSString *serviceIdentifier = self.child.serviceIndentifier;
     NSString *methodName = self.child.methodName;
     NSData *result = [self.cache fetchCachedDataWithServiceIdentifier:serviceIdentifier methodName:methodName requestParams:params];
         
@@ -267,7 +267,7 @@
     [self removeRequestIdWithRequestID:response.requestId];
     if (!self.validator || [self.validator manager:self isCorrectWithResponseData:self.fetchedRawData]) {
         if ([self shouldCache] && !response.isCache) {
-            [self.cache saveCacheWithData:response.responseData serviceIdentifier:self.child.serviceType methodName:self.child.methodName requestParams:response.requestParams];
+            [self.cache saveCacheWithData:response.responseData serviceIdentifier:self.child.serviceIndentifier methodName:self.child.methodName requestParams:response.requestParams];
         }
         [self beforePerformSuccessWithResponse:response];
         [self.delegate managerDidSuccess:self];
