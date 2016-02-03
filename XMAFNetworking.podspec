@@ -10,18 +10,17 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 3.0' 
   s.default_subspec =  'Core' , 'Download' , 'Upload'
   s.frameworks = 'UIKit','Foundation'
-  s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
 
   s.subspec 'Core' do |ss|
     ss.source_files = "XMAFNetworkExample/XMAFNetworking/Assistants/*.{h,m}",     
                       "XMAFNetworkExample/XMAFNetworking/Categories/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/Services/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/Components/*.{h,m}",
-                      "XMAFNetworkExample/XMAFNetworking/Components/CahceComponent/*.{h,m}",
+                      "XMAFNetworkExample/XMAFNetworking/Components/CacheComponent/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/Components/LogComponent/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/*.{h,m}"
     
-    ss.public_header_files = "XMAFNetworkExample/XMAFNetworking/Assistants/*.h","XMAFNetworkExample/XMAFNetworking/Categories/*.h","XMAFNetworkExample/XMAFNetworking/Services/*.h","XMAFNetworkExample/XMAFNetworking/Components/*.h","XMAFNetworkExample/XMAFNetworking/Components/CahceComponent/*.h","XMAFNetworkExample/XMAFNetworking/Components/LogComponent/*.h","XMAFNetworkExample/XMAFNetworking/*.h"
+    ss.public_header_files = "XMAFNetworkExample/XMAFNetworking/Assistants/*.h","XMAFNetworkExample/XMAFNetworking/Categories/*.h","XMAFNetworkExample/XMAFNetworking/Services/*.h","XMAFNetworkExample/XMAFNetworking/Components/*.h","XMAFNetworkExample/XMAFNetworking/Components/CacheComponent/*.h","XMAFNetworkExample/XMAFNetworking/Components/LogComponent/*.h","XMAFNetworkExample/XMAFNetworking/*.h"
     
   end
 

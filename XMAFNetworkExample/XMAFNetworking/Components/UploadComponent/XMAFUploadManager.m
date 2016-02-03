@@ -14,7 +14,6 @@ NSString *const kXMAFUploadManagerSessionIdentifier = @"com.XMFraker.XMAFUploadM
 NSString *const kXMAFUploadURLStringKey = @"com.XMFraker.XMAFUploadManager.URLStringKey";
 NSString *const kXMAFUploadRequestHeadersKey = @"com.XMFraker.XMAFUploadManager.RequestHeadersKey";
 NSString *const kXMAFUploadRequestParamsKey = @"com.XMFraker.XMAFUploadManager.RequestParamsKey";
-static void *kXMAFUploadProgressKey;
 
 @interface XMAFUploadManager ()
 
