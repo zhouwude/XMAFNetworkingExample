@@ -12,6 +12,7 @@
 #import "XMAFDownloadManager.h"
 #import "XMAFUploadManager.h"
 #import "XMAFBaiduWeatherManager.h"
+#import "XMAFBaiduService.h"
 
 @interface XMAFNetworkExampleTests : XCTestCase
 
@@ -26,6 +27,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     [[XMAFAPPContext sharedInstance] configWithChannelID:@"XMAF" appName:@"XMAFAppTypeDemo" appType:XMAFAppTypeDemo];
+    [[XMAFServiceFactory sharedInstance] setService:[[XMAFBaiduService alloc] init] forIdentifier:kXMAFBaiduServiceIdentifier];
     self.baiduWeatherManager = [[XMAFBaiduWeatherManager alloc] init];
     self.downloadManager = [XMAFDownloadManager manager];
     self.uploadManager = [XMAFUploadManager manager];

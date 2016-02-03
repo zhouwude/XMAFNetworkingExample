@@ -30,7 +30,5 @@ static BOOL kXMAFShouldCache = NO;
 static NSTimeInterval kXMAFCacheOutdateTimeSeconds = 300; // 5分钟的cache过期时间
 static NSUInteger kXMAFCacheCountLimit = 1000; // 最多1000条cache
 
-extern NSString *const kXMAFBaiduServiceIdentifier;
-
 
 #endif /* XMAFNetworkingConfiguration_h */

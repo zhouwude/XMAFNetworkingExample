@@ -9,8 +9,6 @@
 #import "XMAFServiceFactory.h"
 #import "XMAFBaiduService.h"
 
-NSString *const kXMAFBaiduServiceIdentifier = @"kXMAFBaiduServiceIdentifier";
-
 @interface XMAFServiceFactory ()
 
 @property (strong, nonatomic) NSMutableDictionary *serviceStorage;
@@ -35,19 +33,14 @@ NSString *const kXMAFBaiduServiceIdentifier = @"kXMAFBaiduServiceIdentifier";
 
 - (XMAFService *)serviceWithIdentifier:(NSString *)identifier {
     if (self.serviceStorage[identifier] == nil) {
-        self.serviceStorage[identifier] = [self createServiceWithIdentifier:identifier];
+        NSLog(@"you must create service for :%@ before use it",identifier);
+        return nil;
     }
     return self.serviceStorage[identifier];
 }
 
-#pragma mark - Private Methods
-
-- (XMAFService *)createServiceWithIdentifier:(NSString *)identifier {
-    //TODO增加各种不同的service
-    if ([identifier isEqualToString:kXMAFBaiduServiceIdentifier]) {
-        return [[XMAFBaiduService alloc] init];
-    }
-    return nil;
+- (void)setService:(XMAFService *)service forIdentifier:(NSString *)identifier {
+    self.serviceStorage[identifier] = service;
 }
 
 #pragma mark - Getters

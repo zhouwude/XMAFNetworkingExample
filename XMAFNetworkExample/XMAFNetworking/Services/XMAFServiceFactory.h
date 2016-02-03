@@ -15,5 +15,6 @@
 + (instancetype)sharedInstance;
 
 - (XMAFService *)serviceWithIdentifier:(NSString *)identifier;
+- (void)setService:(XMAFService *)service forIdentifier:(NSString *)identifier;
 
 @end
