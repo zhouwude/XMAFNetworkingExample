@@ -7,7 +7,7 @@
 //
 
 #import "XMAFBaiduWeatherManager.h"
-#import "XMAFServiceFactory.h"
+#import "XMAFBaiduService.h"
 
 
 @interface XMAFBaiduWeatherManager ()<XMAFManagerCallBackDelegate,XMAFManagerParamSourceDelegate>

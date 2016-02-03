@@ -6,9 +6,8 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "XMFraker" => "3057600441@qq.com" }
   s.source       = { :git => "https://github.com/ws00801526/XMAFNetworkingExample.git", :tag => s.version }
-
-  s.platform = :ios
-  s.dependency 'AFNetworking'
+  s.platform = :ios,8.0
+  s.dependency 'AFNetworking', '~> 3.0' 
   s.default_subspec =  'Core' , 'Download' , 'Upload'
   s.frameworks = 'UIKit','Foundation'
   s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
@@ -18,15 +17,16 @@ Pod::Spec.new do |s|
                       "XMAFNetworkExample/XMAFNetworking/Categories/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/Services/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/Components/*.{h,m}",
-                      "XMAFNetworkExample/XMAFNetworking/CacheComponent/*.{h,m}",
-                      "XMAFNetworkExample/XMAFNetworking/LogComponents/*.{h,m}",
+                      "XMAFNetworkExample/XMAFNetworking/Components/CacheComponent/*.{h,m}",
+                      "XMAFNetworkExample/XMAFNetworking/Components/LogComponent/*.{h,m}",
                       "XMAFNetworkExample/XMAFNetworking/*.{h,m}"
+  end
 
   s.subspec 'Download' do |ss|
-    ss.source_files = "XMAFNetworkExample/XMAFNetworking/DownloadComponents/*.{h,m}"
-
+    ss.source_files = "XMAFNetworkExample/XMAFNetworking/Components/DownloadComponent/*.{h,m}"
+  end
 
   s.subspec 'Upload' do |ss|
-    ss.source_files = "XMAFNetworkExample/XMAFNetworking/UploadComponents/*.{h,m}"
-
+    ss.source_files = "XMAFNetworkExample/XMAFNetworking/Components/UploadComponent/*.{h,m}"
+  end
 end
