@@ -77,7 +77,9 @@
 
 - (void)loadData {
     
-    [[XMAFAPPContext sharedInstance] configWithChannelID:@"XMAF" appName:@"XMAFAppTypeDemo" appType:XMAFAppTypeDemo];
+
+    
+    [[XMAFAPPContext sharedInstance] configWithChannelID:@"ChannelID" appName:@"XMAFDemo" appKey:@"XMAFDemo" logEnable:YES];
     XMAFBaiduWeatherManager *weatherManager = [[XMAFBaiduWeatherManager alloc] init];
     [[weatherManager getCityWeather:@"beijing"] subscribeNext:^(id x) {
         

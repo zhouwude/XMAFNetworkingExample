@@ -9,10 +9,6 @@
 #ifndef XMAFNetworkingConfiguration_h
 #define XMAFNetworkingConfiguration_h
 
-typedef NS_ENUM(NSInteger, XMAFAppType) {
-    XMAFAppTypeDemo
-};
-
 typedef NS_ENUM(NSUInteger, XMAFURLResponseStatus)
 {
     XMAFURLResponseStatusSuccess, //作为底层，请求是否成功只考虑是否成功收到服务器反馈。

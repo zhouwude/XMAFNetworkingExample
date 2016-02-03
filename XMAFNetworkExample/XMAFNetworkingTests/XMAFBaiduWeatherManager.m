@@ -68,9 +68,9 @@
     @weakify(self)
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        [self setCallBackBlock:^(XMAFNetworkingBaseRequest *manager, BOOL isSuccess) {
+        [self setCallBackBlock:^(XMAFNetworkingBaseRequest *request, BOOL isSuccess) {
             if (isSuccess) {
-                [subscriber sendNext:manager];
+                [subscriber sendNext:request];
                 [subscriber sendCompleted];
             }else{
                 [subscriber sendError:nil];

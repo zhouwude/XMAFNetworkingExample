@@ -9,35 +9,31 @@
 #import "XMAFLoggerConfiguration.h"
 #import "XMAFAPPContext.h"
 
+@interface XMAFLoggerConfiguration ()
+/** 是否自动打印网络调试 */
+@property (assign, nonatomic, readwrite) BOOL logEnable;
+
+/** 渠道ID */
+@property (nonatomic, strong, readwrite) NSString *channelID;
+
+/** app标志 */
+@property (nonatomic, strong, readwrite) NSString *appKey;
+
+/** app名字 */
+@property (nonatomic, strong, readwrite) NSString *logAppName;
+
+
+@end
+
 @implementation XMAFLoggerConfiguration
 
-- (void)configWithAppType:(XMAFAppType)appType {
-    switch (appType) {
-        case XMAFAppTypeDemo:
-            self.channelID = [XMAFAPPContext sharedInstance].channelID;
-            self.appKey = @"appKey";
-            self.logAppName = [XMAFAPPContext sharedInstance].appName;
-            self.serviceType = @"com.XMAFNetworking.demo";
-            self.sendLogMethod = @"admin.writeAppLog";
-            self.sendActionMethod = @"admin.recordaction";
-            self.sendLogKey = @"data";
-            self.sendActionKey = @"action_note";
-            self.shouldLog = YES;
-            break;
-            
-        default:
-            self.channelID = [XMAFAPPContext sharedInstance].channelID;
-            self.appKey = @"appKey";
-            self.logAppName = [XMAFAPPContext sharedInstance].appName;
-            self.serviceType = @"com.XMAFNetworking.demo";
-            self.sendLogMethod = @"admin.writeAppLog";
-            self.sendActionMethod = @"admin.recordaction";
-            self.sendLogKey = @"data";
-            self.sendActionKey = @"action_note";
-            self.shouldLog = YES;
-            break;
-    }
++ (XMAFLoggerConfiguration *)configurationWithAppKey:(NSString *)appKey logEnable:(BOOL)logEnable {
+    XMAFLoggerConfiguration *configuration = [[XMAFLoggerConfiguration alloc] init];
+    configuration.channelID = [XMAFAPPContext sharedInstance].channelID ? : @"on channle id";
+    configuration.appKey = appKey ? : @"no app key";
+    configuration.logAppName = [XMAFAPPContext sharedInstance].appName? : @"no app name";
+    configuration.logEnable = logEnable;
+    return configuration;
 }
-
 
 @end

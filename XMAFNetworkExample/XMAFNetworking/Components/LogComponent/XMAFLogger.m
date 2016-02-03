@@ -17,6 +17,7 @@
 @interface XMAFLogger ()
 
 @property (strong, nonatomic) XMAFLoggerConfiguration *configParams;
+
 @end
 
 @implementation XMAFLogger
@@ -35,16 +36,23 @@
 {
     self = [super init];
     if (self) {
-        self.configParams = [[XMAFLoggerConfiguration alloc] init];
-        [self.configParams configWithAppType:[XMAFAPPContext sharedInstance].appType];
+        self.configParams = [XMAFLoggerConfiguration configurationWithAppKey:@"demo" logEnable:YES];
     }
     return self;
 }
 
+
+#pragma mark - Setters
+
+- (void)setConfiguration:(XMAFLoggerConfiguration *)configuration {
+    self.configParams = configuration;
+}
+
+
 #pragma mark - Class Methods
 
 + (void)logDebugInfoWithRequest:(NSURLRequest *)request apiName:(NSString *)apiName service:(XMAFService *)service requestParams:(id)requestParams httpMethod:(NSString *)httpMethod {
-    if ([XMAFLogger sharedInstance].configParams.shouldLog) {
+    if ([XMAFLogger sharedInstance].configParams.logEnable) {
         NSMutableString *logString = [NSMutableString stringWithString:@"\n\n**************************************************************\n*                       Request Start                        *\n**************************************************************\n\n"];
         
         [logString appendFormat:@"API Name:\t\t%@\n", [apiName XMAF_defaultValue:@"N/A"]];
@@ -65,7 +73,7 @@
 
 
 + (void)logDebugInfoWithResponse:(NSHTTPURLResponse *)response resposeString:(NSString *)responseString request:(NSURLRequest *)request error:(NSError *)error {
-    if ([XMAFLogger sharedInstance].configParams.shouldLog) {
+    if ([XMAFLogger sharedInstance].configParams.logEnable) {
         BOOL shouldLogError = error ? YES : NO;
         
         NSMutableString *logString = [NSMutableString stringWithString:@"\n\n==============================================================\n=                        API Response                        =\n==============================================================\n\n"];
@@ -92,7 +100,7 @@
 
 
 + (void)logDebugInfoWithCachedResponse:(XMAFURLResponse *)response methodName:(NSString *)methodName serviceIdentifier:(XMAFService *)service {
-    if ([XMAFLogger sharedInstance].configParams.shouldLog) {
+    if ([XMAFLogger sharedInstance].configParams.logEnable) {
         NSMutableString *logString = [NSMutableString stringWithString:@"\n\n==============================================================\n=                      Cached Response                       =\n==============================================================\n\n"];
         
         [logString appendFormat:@"API Name:\t\t%@\n", [methodName XMAF_defaultValue:@"N/A"]];

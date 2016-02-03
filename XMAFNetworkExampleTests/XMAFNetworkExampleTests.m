@@ -26,7 +26,7 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    [[XMAFAPPContext sharedInstance] configWithChannelID:@"XMAF" appName:@"XMAFAppTypeDemo" appType:XMAFAppTypeDemo];
+    [[XMAFAPPContext sharedInstance] configWithChannelID:@"ChannelID" appName:@"XMAFDemo" appKey:@"XMAFDemo" logEnable:YES];
     [[XMAFServiceFactory sharedInstance] setService:[[XMAFBaiduService alloc] init] forIdentifier:kXMAFBaiduServiceIdentifier];
     self.baiduWeatherManager = [[XMAFBaiduWeatherManager alloc] init];
     self.downloadManager = [XMAFDownloadManager manager];

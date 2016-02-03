@@ -135,12 +135,11 @@
 
 #pragma mark - Public Methods
 
-- (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appType:(XMAFAppType)appType
+- (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appKey:(NSString *)appKey logEnable:(BOOL)logEnable
 {
     self.channelID = channelID;
     self.appName = appName;
-    self.appType = appType;
-    [[XMAFLogger sharedInstance].configParams configWithAppType:appType];
+    [[XMAFLogger sharedInstance] setConfiguration:[XMAFLoggerConfiguration configurationWithAppKey:appKey logEnable:YES]];
 }
 
 @end

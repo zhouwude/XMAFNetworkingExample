@@ -15,7 +15,6 @@
 
 @property (nonatomic, copy) NSString *channelID;    //渠道号
 @property (nonatomic, copy) NSString *appName;      //应用名称
-@property (nonatomic, assign) XMAFAppType appType;
 
 #pragma mark - 请求相关参数
 @property (nonatomic, copy, readonly) NSString *deviceName;            //设备名称
@@ -32,6 +31,6 @@
 
 + (instancetype)sharedInstance;
 
-- (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appType:(XMAFAppType)appType;
+- (void)configWithChannelID:(NSString *)channelID appName:(NSString *)appName appKey:(NSString *)appKey logEnable:(BOOL)logEnable;
 
 @end
