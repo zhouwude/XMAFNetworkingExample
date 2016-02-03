@@ -9,6 +9,9 @@
 #import "XMAFService.h"
 
 
+extern NSString *const kXMAFBaiduServiceIdentifier;
+
+
 @interface XMAFBaiduService : XMAFService
 
 @end

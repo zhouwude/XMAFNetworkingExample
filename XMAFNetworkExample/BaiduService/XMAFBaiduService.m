@@ -9,6 +9,8 @@
 #import "XMAFBaiduService.h"
 #import "XMAFCommonParamsGenerator.h"
 
+NSString *const kXMAFBaiduServiceIdentifier = @"kXMAFBaiduServiceIdentifier";
+
 @implementation XMAFBaiduService
 
 #pragma mark - Getters
