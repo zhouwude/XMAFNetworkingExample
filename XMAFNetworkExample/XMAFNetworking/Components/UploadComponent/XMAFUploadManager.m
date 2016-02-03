@@ -45,15 +45,13 @@ static void *kXMAFUploadProgressKey;
             [self.requestSerizalizer setValue:obj forHTTPHeaderField:key];
         }];
     }
-
     NSMutableURLRequest *request = [self.requestSerizalizer multipartFormRequestWithMethod:@"POST" URLString:arguments[kXMAFUploadURLStringKey] parameters:arguments[kXMAFUploadRequestParamsKey] constructingBodyWithBlock:constructingBodyBlock error:nil];
-    NSProgress *progress;
-    NSURLSessionUploadTask *uploadTask = [self.sessionManager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    NSURLSessionUploadTask *uploadTask = [self.sessionManager uploadTaskWithStreamedRequest:request  progress:^(NSProgress * _Nonnull uploadProgress) {
+        progressBlock(uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         completeBlock(responseObject,error);
     }];
-    [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
     [uploadTask resume];
-    progressBlock ? objc_setAssociatedObject(progress, &kXMAFUploadProgressKey, progressBlock, OBJC_ASSOCIATION_COPY_NONATOMIC) : nil;
     return uploadTask;
 }
 
