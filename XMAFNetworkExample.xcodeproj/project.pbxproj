@@ -22,8 +22,6 @@
 		9348CF221BD75E0500FD8419 /* XMAFNetworkExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9348CF211BD75E0500FD8419 /* XMAFNetworkExampleTests.m */; };
 		9348CF351BD75F2F00FD8419 /* NSString+XMAFNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 9348CF341BD75F2F00FD8419 /* NSString+XMAFNetworkingMethods.m */; };
 		938054711BD9DF170062F4C7 /* XMAFBaiduWeatherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 938054701BD9DF170062F4C7 /* XMAFBaiduWeatherManager.m */; };
-		93867C1B1BD8877A0042D3CC /* XMAFCacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 93867C1A1BD8877A0042D3CC /* XMAFCacheObject.m */; };
-		93867C1E1BD887870042D3CC /* XMAFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 93867C1D1BD887870042D3CC /* XMAFCache.m */; };
 		93CAD1421BD76E56007B49AA /* XMAFLoggerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD1411BD76E56007B49AA /* XMAFLoggerConfiguration.m */; };
 		93CAD1451BD76E63007B49AA /* XMAFLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD1441BD76E63007B49AA /* XMAFLogger.m */; };
 		93CAD1481BD76F06007B49AA /* XMAFAPPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD1471BD76F06007B49AA /* XMAFAPPContext.m */; };
@@ -42,6 +40,8 @@
 		93FC26F31BD768D60071856B /* UIDevice+XMAFNetworkingMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC26F21BD768D60071856B /* UIDevice+XMAFNetworkingMethods.m */; };
 		93FC26F61BD7699A0071856B /* XMAFUDIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FC26F51BD7699A0071856B /* XMAFUDIDGenerator.m */; };
 		9725949D1C60BA16006C94C6 /* XMAFBaiduService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9725949C1C60BA16006C94C6 /* XMAFBaiduService.m */; };
+		97BE5DF51C6198D000177799 /* XMAFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE5DF21C6198D000177799 /* XMAFCache.m */; };
+		97BE5DF61C6198D000177799 /* XMAFCacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE5DF41C6198D000177799 /* XMAFCacheObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,10 +83,6 @@
 		9348CF341BD75F2F00FD8419 /* NSString+XMAFNetworkingMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XMAFNetworkingMethods.m"; sourceTree = "<group>"; };
 		9380546F1BD9DF170062F4C7 /* XMAFBaiduWeatherManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFBaiduWeatherManager.h; sourceTree = "<group>"; };
 		938054701BD9DF170062F4C7 /* XMAFBaiduWeatherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFBaiduWeatherManager.m; sourceTree = "<group>"; };
-		93867C191BD8877A0042D3CC /* XMAFCacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFCacheObject.h; sourceTree = "<group>"; };
-		93867C1A1BD8877A0042D3CC /* XMAFCacheObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFCacheObject.m; sourceTree = "<group>"; };
-		93867C1C1BD887870042D3CC /* XMAFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFCache.h; sourceTree = "<group>"; };
-		93867C1D1BD887870042D3CC /* XMAFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFCache.m; sourceTree = "<group>"; };
 		93CAD1401BD76E56007B49AA /* XMAFLoggerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFLoggerConfiguration.h; sourceTree = "<group>"; };
 		93CAD1411BD76E56007B49AA /* XMAFLoggerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFLoggerConfiguration.m; sourceTree = "<group>"; };
 		93CAD1431BD76E63007B49AA /* XMAFLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFLogger.h; sourceTree = "<group>"; };
@@ -123,6 +119,10 @@
 		93FC26F51BD7699A0071856B /* XMAFUDIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFUDIDGenerator.m; sourceTree = "<group>"; };
 		9725949B1C60BA16006C94C6 /* XMAFBaiduService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFBaiduService.h; sourceTree = "<group>"; };
 		9725949C1C60BA16006C94C6 /* XMAFBaiduService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFBaiduService.m; sourceTree = "<group>"; };
+		97BE5DF11C6198D000177799 /* XMAFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFCache.h; sourceTree = "<group>"; };
+		97BE5DF21C6198D000177799 /* XMAFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFCache.m; sourceTree = "<group>"; };
+		97BE5DF31C6198D000177799 /* XMAFCacheObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMAFCacheObject.h; sourceTree = "<group>"; };
+		97BE5DF41C6198D000177799 /* XMAFCacheObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMAFCacheObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,9 +278,9 @@
 		9348CF311BD75EE700FD8419 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				97BE5DF01C6198D000177799 /* CacheComponent */,
 				933F7AC51BE0B5A6000A095E /* UploadComponent */,
 				934179351BDF398A0099EA33 /* DownloadComponent */,
-				93867C181BD8876B0042D3CC /* CahceComponent */,
 				93CAD13F1BD76E2B007B49AA /* LogComponent */,
 				93CAD1461BD76F06007B49AA /* XMAFAPPContext.h */,
 				93CAD1471BD76F06007B49AA /* XMAFAPPContext.m */,
@@ -314,17 +314,6 @@
 			path = XMAFNetworkingTests;
 			sourceTree = "<group>";
 		};
-		93867C181BD8876B0042D3CC /* CahceComponent */ = {
-			isa = PBXGroup;
-			children = (
-				93867C191BD8877A0042D3CC /* XMAFCacheObject.h */,
-				93867C1A1BD8877A0042D3CC /* XMAFCacheObject.m */,
-				93867C1C1BD887870042D3CC /* XMAFCache.h */,
-				93867C1D1BD887870042D3CC /* XMAFCache.m */,
-			);
-			path = CahceComponent;
-			sourceTree = "<group>";
-		};
 		93BFC41B4AFFCA459809324C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +341,17 @@
 				9725949C1C60BA16006C94C6 /* XMAFBaiduService.m */,
 			);
 			path = BaiduService;
+			sourceTree = "<group>";
+		};
+		97BE5DF01C6198D000177799 /* CacheComponent */ = {
+			isa = PBXGroup;
+			children = (
+				97BE5DF11C6198D000177799 /* XMAFCache.h */,
+				97BE5DF21C6198D000177799 /* XMAFCache.m */,
+				97BE5DF31C6198D000177799 /* XMAFCacheObject.h */,
+				97BE5DF41C6198D000177799 /* XMAFCacheObject.m */,
+			);
+			path = CacheComponent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,14 +516,13 @@
 				93FC26F01BD7689F0071856B /* NSObject+XMAFNetworkingMethods.m in Sources */,
 				9348CF351BD75F2F00FD8419 /* NSString+XMAFNetworkingMethods.m in Sources */,
 				93FC26F31BD768D60071856B /* UIDevice+XMAFNetworkingMethods.m in Sources */,
-				93867C1E1BD887870042D3CC /* XMAFCache.m in Sources */,
 				93CAD1571BD77C1F007B49AA /* NSURLRequest+XMAFNetworkingMethods.m in Sources */,
 				9725949D1C60BA16006C94C6 /* XMAFBaiduService.m in Sources */,
 				93CAD1661BD78318007B49AA /* NSDictionary+XMAFNetworkingMethods.m in Sources */,
 				93CAD1451BD76E63007B49AA /* XMAFLogger.m in Sources */,
-				93867C1B1BD8877A0042D3CC /* XMAFCacheObject.m in Sources */,
 				9348CF0F1BD75E0500FD8419 /* ViewController.m in Sources */,
 				93FC26F61BD7699A0071856B /* XMAFUDIDGenerator.m in Sources */,
+				97BE5DF51C6198D000177799 /* XMAFCache.m in Sources */,
 				938054711BD9DF170062F4C7 /* XMAFBaiduWeatherManager.m in Sources */,
 				93CAD1541BD77AFA007B49AA /* NSMutableString+XMAFNetworkingMethods.m in Sources */,
 				93CAD1691BD78356007B49AA /* NSArray+XMAFNetworkingMethods.m in Sources */,
@@ -531,6 +530,7 @@
 				9348CF0C1BD75E0500FD8419 /* AppDelegate.m in Sources */,
 				934179381BDF399A0099EA33 /* XMAFDownloadManager.m in Sources */,
 				93CAD14B1BD775C6007B49AA /* XMAFService.m in Sources */,
+				97BE5DF61C6198D000177799 /* XMAFCacheObject.m in Sources */,
 				9348CF091BD75E0500FD8419 /* main.m in Sources */,
 				93CAD1601BD77CE9007B49AA /* XMAFRequestGenerator.m in Sources */,
 				933F7AC81BE0B5C4000A095E /* XMAFUploadManager.m in Sources */,

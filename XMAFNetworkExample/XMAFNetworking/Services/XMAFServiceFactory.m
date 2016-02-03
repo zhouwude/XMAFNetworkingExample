@@ -7,7 +7,7 @@
 //
 
 #import "XMAFServiceFactory.h"
-#import "XMAFBaiduService.h"
+
 
 @interface XMAFServiceFactory ()
 
