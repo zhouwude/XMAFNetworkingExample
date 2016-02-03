@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "XMAFNetworking"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "一个基于AFNetworking 网络请求类库的封装"
   s.homepage     = "https://github.com/ws00801526/XMAFNetworkingExample"
   s.license      = "MIT"
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
                       "XMAFNetworkExample/XMAFNetworking/*.{h,m}"
     
     ss.public_header_files = "XMAFNetworkExample/XMAFNetworking/Assistants/*.h","XMAFNetworkExample/XMAFNetworking/Categories/*.h","XMAFNetworkExample/XMAFNetworking/Services/*.h","XMAFNetworkExample/XMAFNetworking/Components/*.h","XMAFNetworkExample/XMAFNetworking/Components/CacheComponent/*.h","XMAFNetworkExample/XMAFNetworking/Components/LogComponent/*.h","XMAFNetworkExample/XMAFNetworking/*.h"
-    
+
   end
 
   s.subspec 'Download' do |ss|
