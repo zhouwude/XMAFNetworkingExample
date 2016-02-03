@@ -55,16 +55,6 @@ static void *kXMAFUploadProgressKey;
     return uploadTask;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
-        NSProgress *progress = (NSProgress *)object;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            XMAFUploadProgressBlock progressBlock = objc_getAssociatedObject(progress, &kXMAFUploadProgressKey);
-            progressBlock(progress.completedUnitCount,progress.totalUnitCount);
-        });
-    }
-}
-
 #pragma mark - Getters
 
 - (AFHTTPRequestSerializer *)requestSerizalizer {
