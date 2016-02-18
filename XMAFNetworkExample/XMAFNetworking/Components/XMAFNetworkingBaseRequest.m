@@ -45,7 +45,7 @@
         if ([self conformsToProtocol:@protocol(XMAFManagerProtocol)]) {
             self.child = (id<XMAFManagerProtocol>)self;
         }else{
-            NSAssert(NO, @"you must conforms To Protocol XMAFManager");
+            NSAssert(NO, @"you must conforms To Protocol XMAFManagerProtocol");
         }
     }
     return self;
@@ -141,8 +141,6 @@
 }
 
 
-#pragma mark - XMAFManagerProtocol Methods
-
 /**
  *  提前写好,以下三个方法不是必须实现的,在BaseManager中又调用了,所以在BaseManager中实现一下,防止出现方法不存在的情况,子类可以重写一下三个方法
  *
@@ -166,6 +164,19 @@
     return kXMAFShouldCache;
 }
 
+#pragma mark - XMAFManagerProtocol Methods
+
+- (NSString *)methodName {
+    return @"";
+}
+
+- (NSString *)serviceIndentifier {
+    return @"";
+}
+
+- (XMAFManagerRequestType)requestType {
+    return XMAFManagerRequestTypeGet;
+}
 
 #pragma mark - Private Methods
 

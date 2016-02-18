@@ -88,7 +88,7 @@ typedef NS_ENUM (NSUInteger, XMAFManagerRequestType){
 
 @end
 
-@interface XMAFNetworkingBaseRequest : NSObject
+@interface XMAFNetworkingBaseRequest : NSObject <XMAFManagerProtocol>
 
 @property (nonatomic, weak) id<XMAFManagerCallBackDelegate> delegate;
 @property (copy, nonatomic) XMAFManagerCallBackBlock callBackBlock;
