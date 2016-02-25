@@ -83,7 +83,7 @@ typedef NS_ENUM (NSUInteger, XMAFManagerRequestType){
 
 @required
 - (NSString *)methodName;
-- (NSString *)serviceIndentifier;
+- (NSString *)serviceIdentifer;
 - (XMAFManagerRequestType)requestType;
 
 @end

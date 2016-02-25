@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "XMAFNetworking"
-  s.version      = "1.0.1"
+  s.version      = "1.0.3"
   s.summary      = "一个基于AFNetworking 网络请求类库的封装"
   s.homepage     = "https://github.com/ws00801526/XMAFNetworkingExample"
   s.license      = "MIT"

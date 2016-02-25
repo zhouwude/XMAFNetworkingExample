@@ -47,7 +47,7 @@
     return @"heweather/weather/free";
 }
 
-- (NSString *)serviceIndentifier {
+- (NSString *)serviceIdentifer {
     return kXMAFBaiduServiceIdentifier;
 }
 

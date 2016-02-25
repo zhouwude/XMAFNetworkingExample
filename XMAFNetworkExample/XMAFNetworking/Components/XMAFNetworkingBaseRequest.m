@@ -170,7 +170,7 @@
     return @"";
 }
 
-- (NSString *)serviceIndentifier {
+- (NSString *)serviceIdentifer {
     return @"";
 }
 
@@ -198,7 +198,7 @@
                 {
                     case XMAFManagerRequestTypeGet:
                     {
-                        requestId = [[XMAFApiProxy sharedInstance] callGETWithParams:apiParams serviceIdentifier:self.child.serviceIndentifier methodName:self.child.methodName success:^(XMAFURLResponse *response) {
+                        requestId = [[XMAFApiProxy sharedInstance] callGETWithParams:apiParams serviceIdentifier:self.child.serviceIdentifer methodName:self.child.methodName success:^(XMAFURLResponse *response) {
                             [self successedOnCallingAPI:response];
                         } fail:^(XMAFURLResponse *response) {
                             [self failedOnCallingAPI:response withErrorType:XMAFManagerErrorTypeDefault];
@@ -208,7 +208,7 @@
                         break;
                     case XMAFManagerRequestTypePost:
                     {
-                        requestId = [[XMAFApiProxy sharedInstance] callPOSTWithParams:apiParams serviceIdentifier:self.child.serviceIndentifier methodName:self.child.methodName success:^(XMAFURLResponse *response) {
+                        requestId = [[XMAFApiProxy sharedInstance] callPOSTWithParams:apiParams serviceIdentifier:self.child.serviceIdentifer methodName:self.child.methodName success:^(XMAFURLResponse *response) {
                             [self successedOnCallingAPI:response];
                         } fail:^(XMAFURLResponse *response) {
                             [self failedOnCallingAPI:response withErrorType:XMAFManagerErrorTypeDefault];
@@ -240,7 +240,7 @@
 
 - (BOOL)hasCacheWithParams:(NSDictionary *)params
 {
-    NSString *serviceIdentifier = self.child.serviceIndentifier;
+    NSString *serviceIdentifier = self.child.serviceIdentifer;
     NSString *methodName = self.child.methodName;
     NSData *result = [self.cache fetchCachedDataWithServiceIdentifier:serviceIdentifier methodName:methodName requestParams:params];
         
@@ -278,7 +278,7 @@
     [self removeRequestIdWithRequestID:response.requestId];
     if (!self.validator || [self.validator manager:self isCorrectWithResponseData:self.fetchedRawData]) {
         if ([self shouldCache] && !response.isCache) {
-            [self.cache saveCacheWithData:response.responseData serviceIdentifier:self.child.serviceIndentifier methodName:self.child.methodName requestParams:response.requestParams];
+            [self.cache saveCacheWithData:response.responseData serviceIdentifier:self.child.serviceIdentifer methodName:self.child.methodName requestParams:response.requestParams];
         }
         [self beforePerformSuccessWithResponse:response];
         [self.delegate managerDidSuccess:self];
